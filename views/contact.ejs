@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body{background-color: rgb(18, 18, 18);font-family: Georgia, 'Times New Roman', Times, serif}
+            h1{text-align: center;padding: 3px;color:#ef0e0e}
+            p{font-size: 18px;text-align: center;padding: 3px;color:#f3eded}
+            form{width: 400px; max-width: 100%;padding:20px;margin:20px auto }
+            input{display: block; margin: 10px ;padding: 5px; width:100%;color: rgb(15, 15, 15);}
+            label{display: block; margin: 10px ;padding: 5px; width:100%;color: aliceblue;}
+            input[type='submit']{width:auto}
+        </style>
+    </head>
+
+    <body>
+        <%- include ('partials/nav') %>
+        <h1>THIS IS THE CONTACT PAGE</h1>
+        <form id="contact-form" method="POST" action="/contact">
+            <label for="name">Who do you want to contact?</label>
+            <input type="text" name="name" value="<%=qs.name%>"/>
+            <br>
+            <label for="dept">Which Department?</label>
+            <input type="text" name="dept" value="<%=qs.dept%>"/>
+            <br>
+            <label for="email">What is your Email?</label>
+            <input type="email" name="email" value="<%=qs.email%>"/>
+            <br>
+            <input type="submit" value="submitme" />
+
+        </form>
+    </body>
+
+</html>

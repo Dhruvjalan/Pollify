@@ -1,0 +1,437 @@
+*{
+    text-align: right;
+}
+
+body{
+    min-height: 50rem;
+    width: 85%;
+    margin: 0 auto;
+}
+header a{
+    text-decoration: none;
+    
+}
+
+header{
+    padding: 0 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+#logo{
+    display: flex;
+    text-align: left;
+    padding: 1.25rem 1.875rem;
+    justify-content: flex-start;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.top{
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}@media screen and (max-width: 600px){
+    .top{
+        flex-wrap: wrap;
+    }
+}
+.main{
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+@media screen and (max-width: 600px) {
+    .main{
+        flex-wrap: wrap
+    }
+}
+    .MainImg{
+        justify-self: flex-start;
+        align-self: stretch;
+        display: flex;
+
+        width: 180%;
+        justify-content: center;
+        align-content: flex-end;
+        float: left;
+    }
+    .middle{
+        display: flex;
+        justify-self:flex-start;
+        align-self:flex-end;
+    }@media screen and (max-width: 600px) {
+        .middle{
+            flex-wrap: wrap
+        }
+    }
+
+        .bigText{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            justify-self: flex-start;
+            align-self: center;
+            flex-wrap: wrap;
+            color: black;
+            font-size: 5rem;
+        }@media screen and (max-width: 600px) {
+            .bigText{
+                flex-wrap: wrap;
+                text-align: center;
+                justify-self: center;
+                justify-content: center;
+                
+            }
+        }
+        .description{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            justify-self: flex-end;
+            align-self: center;
+            margin: 2.4rem;
+            margin-bottom: 0rem;
+            margin-top: 5rem;
+            align-items: center;
+            justify-self: center;
+            align-self: center;
+            flex-wrap: wrap;    font-size: 1.5rem;
+            color: gray;
+            font-family: "Parkinsans", sans-serif;
+        }@media screen and (max-width: 600px) {
+            .description{
+                flex-wrap: wrap
+            }
+        }
+    div{
+        white-space:normal;
+    }
+            .description h2{
+                display: flex;
+                justify-self: flex-start;
+                align-self: stretch;
+                justify-content: left;
+                align-items: left;
+            }
+            button{
+                display: flex;
+                border: none;
+                justify-content: center;
+                align-items: center;
+                color: rgba(0,0,26,255);
+                justify-self: flex-end;
+                align-self: center;
+                background-color:rgba(255,0,0,0.8);
+                text-align: center;
+                height: 7rem;
+                width: 31.25rem;
+                font-size: 1.8rem;
+                margin-top: 3rem;
+                margin-left: 3rem;
+                cursor: pointer;
+            }
+            
+            button:hover{
+                display: flex;
+                border: none;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                justify-self: flex-end;
+                align-self: center;
+                background-color:rgba(0,0,26,255);
+                text-align: center;
+                height: 7rem;
+                width: 31.25rem;
+                font-size: 1.8rem;
+                margin-top: 3rem;
+                margin-left: 3rem;
+                cursor: pointer;
+            }
+    .sideBox{
+        display: flex;
+        justify-self: flex-end;
+        align-self: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(7, 7, 63);
+        margin: 1.25rem;
+        color: rgba(255,230,160,255);
+        width:31.25rem;
+        height: 100rem;
+        justify-content: center;
+        font-size: 3em;
+        font-family: "Parkinsans", sans-serif;
+        text-wrap: wrap;
+        flex-wrap: wrap;
+        flex-shrink: 1;
+    }@media screen and (max-width: 600px) {
+        .sideBox{
+            flex-wrap: wrap;
+            justify-self: flex-end;
+            align-self: center;
+        }
+    }
+    div h2{
+        margin-bottom: 0rem;
+    }
+    div h6{
+        color: white;
+        padding: 0rem;
+        margin-bottom: 0rem;
+        margin-top: 0px;
+        text-align: left;
+        align-self: flex-start;
+    }
+
+    div h6:hover{
+        color: rgba(255,230,160,255);
+        padding: 0rem;
+        margin-top: 0px;
+        margin-bottom: 0rem;
+        text-align: left;
+        align-self:flex-start ;
+    }
+
+    div p{
+        font-size: 0.5em;
+        text-align: left;
+        padding: 0.3125rem 1.25rem;
+        color: #e0e4e1;
+        margin-top: 0rem;
+        align-self: flex-start;
+    }
+
+    div hr{
+        border: none;
+        background-color: #e0e4e1;
+        height: 0.125rem;
+        margin: 0rem 3.125rem;
+        width: 31.25rem;
+        align-self: flex-start;
+
+    }
+
+
+
+.bottom{
+    grid-area: 5/1/5/4;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:auto;
+    height:31.25rem;
+    margin: 1.875rem;
+}@media screen and (max-width: 600px) {
+    .bottom{
+        flex-wrap: wrap
+    }
+}
+
+.box{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background-color: yellow; */
+    color: rgba(239,104,85,255);
+    width: 43.75rem;
+}@media screen and (max-width: 600px) {
+    .box{
+        flex-wrap: wrap;
+        justify-self:flex-end;
+    }
+}
+
+.box img{
+    grid-area: 1/1/4/2;
+    align-self: stretch;
+    height:28.75rem;
+    margin: 1.25rem;
+}
+
+.box h1{
+    grid-area: 1/2/1/2;
+    color: rgba(244,115,106,255);
+    text-align: left;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-size: 5rem;
+    margin-bottom: 0.125rem;
+}
+
+.box h2{
+    grid-area: 2/2/2/2;
+    text-align: left;
+    justify-self: flex-start;
+    margin-top: 0.625rem;
+    align-self:stretch;
+    color: black;
+    font-size: 3em;
+}
+
+.box h2:hover{
+    grid-area: 2/2/2/2;
+    text-align: left;
+    justify-self: flex-start;
+    margin-top: 0.625rem;
+    align-self:stretch;
+    color: rgba(244,115,106,255);
+    font-size: 3em;
+}
+
+.box p{
+    grid-area: 3/2/3/2;
+    text-align: left;
+    justify-self: flex-start;
+    align-self: flex-start;
+    color: gray;
+    padding-left: 0rem;
+    font-size: 2em;
+}
+
+
+footer{
+    clear: both;
+    text-align: center;
+    font-size: 2rem
+  }@media screen and (max-width: 600px) {
+    .footer{
+        clear:both;
+        justify-self: center;
+        align-self: flex-end;
+    }
+}
+
+
+
+p{
+    justify-content: center;
+  }
+  
+
+ul{
+    list-style: none;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    align-self: flex-start;
+}
+
+ul li{
+    display: flex;
+    padding: 0.2rem;
+    margin-left: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style: none;
+    display: inline-block;
+    text-align: right;
+    padding: 1.5625rem;
+    font-size: 1.875rem;
+  }
+
+  a{
+    text-decoration: none;
+    color: hsl(228, 45%, 44%); 
+  }
+  
+  a:hover{
+    text-decoration: none;
+    color:rgba(255,0,0,0.8); 
+  }
+
+  #hamburger-icon {
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+    justify-self: flex-end;
+    align-self: flex-start;
+  }
+  
+  #hamburger-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+    justify-self: flex-end;
+    align-self: flex-start;
+  }
+  
+  .open .bar1 {
+    color: black;
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  
+  .open .bar2 {
+    opacity: 0;
+  }
+  
+  .open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+  }
+  
+  .open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-color: white;
+  }
+  
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: calc(100vh - 50px);
+    width: 100%;
+  }
+  
+  .mobile-menu li {
+    margin-bottom: 10px;
+    justify-self: flex-end;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    header nav {
+      display: none;
+    }
+  
+    #hamburger-icon {
+      display: block;
+      z-index: 1;
+      justify-self: flex-end;
+      align-self: flex-start;
+    }
+    .bar1{
+        color: black;
+        background-color: black;
+        justify-self:flex-end ;
+    }
+    .bar3{
+        color: black;
+        background-color: black;
+        justify-self: flex-end;
+    }
+  }
