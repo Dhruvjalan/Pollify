@@ -1,25 +1,33 @@
-import React from 'react';
-import { useParams } from "react-router-dom";
+import BlogList from './BlogList';
+import Navbar from './Navbar';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
+const Home = () => {
+  const [polls, setPolls] = useState([]);
+    const {user} = useParams() 
+  useEffect(() => {
+    axios.get("http://localhost:4000/getpolls")
+      .then(response => {
+        console.log("Data in Home:", response.data);
+        setPolls(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching polls:", error);
+      });
+  }, []); // Empty dependency array to run once on mount
 
-const UserHome = () => {
-    const {user} = useParams()
-    // const user="Dhruv"
-    
+  return ( 
+    <div className="Home">
+    <Navbar userid={user} />
+      <h2>Home Page</h2>
+      {polls.length > 0 ? (
+        <BlogList blogs={polls} title="All Polls!" user={user}/>
+      ) : (
+        <div>Loading polls...</div>
+      )}    </div>
+  );
+}
 
-    return (
-        <div>
-            <header>
-                <h1>Welcome to {user} Home</h1>
-            </header>
-            <main>
-                <p>This is the user home page.</p>
-            </main>
-            <footer>
-                <p>&copy; 2023 Your Company</p>
-            </footer>
-        </div>
-    );
-};
-
-export default UserHome;
+export default Home;

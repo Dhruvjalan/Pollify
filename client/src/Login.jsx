@@ -15,7 +15,7 @@ const Login = () => {
         .then(result =>{ 
             console.log(result)
             if(result.data === 'Success'){
-                navigate(`/${name}/home`)
+                navigate(`${name}/home`)
             }
         })
         .catch(err => console.log("Axios Error: ", err))
