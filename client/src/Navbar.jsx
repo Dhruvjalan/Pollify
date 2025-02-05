@@ -7,6 +7,7 @@ const Navbar = ({userid}) => {
             <h1>The Dojo Poll</h1>
             <div className='Links'>
             <Link to={`/${userid}/home`}>Home</Link>
+            <Link to={`/${userid}/Search`}>Search</Link>
             
             <Link to={`/${userid}/create`} style={{
                 color: "white",

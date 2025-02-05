@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -9,6 +10,7 @@ import axios from 'axios';
 
 const Create = () => {
     var n=1;
+    const navigate = useNavigate()
     const {user} = useParams()
     const [title, setTitle] = useState('')
     const [option, setOption] = useState('')

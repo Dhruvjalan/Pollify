@@ -17,7 +17,7 @@ function App() {
       <Route path='/:user/home' element={<UserHome />}></Route>
       <Route path='/:user/create' element={<Create />}></Route>
       <Route path='/:user/:id/Detail' element={<BlogDetails />}></Route>
-      <Route path='/:user/Search/:mode' element={<BlogDetails />}></Route>
+      <Route path='/:user/Search' element={<Search />}></Route>
       </Routes>
     </BrowserRouter>
   )

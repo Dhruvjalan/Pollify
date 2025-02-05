@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import ChartComponent from "./Chart";
 import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 const BlogDetails = () => {
-
+    const navigate = useNavigate()
     const { user, id }=useParams()
     const [blog,setBlog] = useState({})
     const [voted,setVoted] = useState(false)
@@ -21,7 +22,8 @@ const BlogDetails = () => {
         console.log("blog in blogdetails",blog)})
     .catch(err=>{
         console.log("Axios err",err)
-    })},[])
+    })
+},[])
     
     
 
@@ -32,7 +34,17 @@ const BlogDetails = () => {
     //         // history.push('/')
     //     })
     // }
+    const HandleDel = (e)=>{
+        console.log("in handledel")
+        axios.delete("http://localhost:4000/delpoll/",{data: {id}}).then(
+            result=>{
+                console.log("Deleted ",result.data)
+            }
+        ).catch(err=>console.error("error in deleting", err))
+        navigate(`/${user}/home`)
 
+
+    }
     
     const HandleOptionClick=(event)=>{
             console.log("user:", user)
@@ -72,7 +84,7 @@ const BlogDetails = () => {
             {blog && <article>
                 {console.log(blog)}
              <h2>{blog.title}</h2>
-             <p>Written By: {blog.author}</p>
+             <p>Posted By: {blog.author}</p>
              <div className="Buttons">
 
              {blog.poll && Array.from({ length: blog.poll.length }, (_, i) => (
@@ -90,7 +102,8 @@ const BlogDetails = () => {
              {/* <button onClick={&handleClick}>Delete Poll</button> */}
              </div>
              </article>}
-             <ChartComponent id={id}/>
+             {blog.voted && blog.voted.some(vote => vote.user === user) && <ChartComponent id={id}/>}
+             {blog && blog.author === user && <button onClick={HandleDel}>Delete</button>}
             </div>
 
      );
