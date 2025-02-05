@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import { Link  } from "react-router-dom"
 
 
-const Home = () => {
+const Search = () => {
   const {user} = useParams()
   const [polls,setPolls] = useState([]) 
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')

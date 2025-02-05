@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const ObjectId = require('mongodb').ObjectId;
+
 const cors = require('cors')
 const UserModel = require('./models/user')
 const PollModel = require('./models/poll')
@@ -8,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     origin: '*',
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST','PUT'],
     allowedHeaders: ['Content-Type']
   }));
   
@@ -24,6 +26,7 @@ mongoose.connect(MONGO_CONNST + DBNAME, {
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
   
   app.post('/login',(req,res)=>{
+    console.log("req on line 29",req)
     const {name,password} = req.body;
     UserModel.findOne({name: name}).then(user=>{
       if(user){
@@ -45,11 +48,46 @@ mongoose.connect(MONGO_CONNST + DBNAME, {
   });
 app.post('/register',(req,res)=>{
     UserModel.create(req.body).then(user=> res.json(user)).catch(err=>res.json(err))
-    console.log("Entered 1 user")
+    // console.log("Entered 1 user")
 })
 
 app.post('/insertpoll',(req,res)=>{
   PollModel.create(req.body).then(poll=> res.json(poll)).catch(err=>res.json(err))
-  console.log("Entered 1 poll")
+  // console.log("Entered 1 poll")
 })
+
+app.post('/getpoll',(req,res)=>{
+  const {id} = req.body;
+  PollModel.findOne({_id: new ObjectId(id)}).then(poll=>{
+    res.json(poll)
+    // console.log("poll: ",poll)
+  })
+})
+
+app.put('/updatepoll/:id', async (req, res) => { 
+  try {
+    const { id } = req.params;
+    const blog = req.body;
+
+    // Convert id to Mongoose ObjectId
+    const objectId = new mongoose.Types.ObjectId(id);
+    blog._id = objectId; // Ensure the replacement has the correct _id type
+
+    // Replace the document and return the updated one
+    const updatedPoll = await PollModel.findOneAndReplace(
+      { _id: objectId }, 
+      blog, 
+      { new: true } // This option returns the updated document
+    );
+
+    if (!updatedPoll) {
+      return res.status(404).json({ message: "Poll not found" });
+    }
+    res.json(updatedPoll);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 app.listen(PORT,()=>console.log("Server Running on port ",PORT))

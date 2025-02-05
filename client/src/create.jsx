@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -21,9 +22,10 @@ const Create = () => {
         axios.post('http://localhost:4000/insertpoll', { title, poll, author: user, totalvotes:0,voted:[]})
         .then(result =>{ 
             console.log(result)
-            navigate('/login')
         })
         .catch(err => console.log("Axios Error: ", err))
+        navigate(`/${user}/home`)
+
 
         // const blog = {title, poll, author, t_votes: 0,ip: []}
         // setIsPending(true)

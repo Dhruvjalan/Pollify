@@ -4,8 +4,6 @@ import useFetch from './useFetch';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Link  } from "react-router-dom"
-
 
 const Home = () => {
   const {user} = useParams()
@@ -33,7 +31,7 @@ const Home = () => {
     <Navbar userid={user} />
       <h2>Home Page</h2>
       {polls.length>0? (
-        <a><BlogList blogs={polls} title="All Polls!" user={user}/></a>
+        <BlogList blogs={polls} title="All Polls!" user={user}/>
       ) : (
         <div>Loading polls...</div>
       )}    </div>
