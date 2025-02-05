@@ -8,7 +8,7 @@ import { Link  } from "react-router-dom"
 
 
 const Search = () => {
-  const {user} = useParams()
+  const {user,mode} = useParams()
   const [polls,setPolls] = useState([]) 
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
@@ -22,16 +22,27 @@ const Search = () => {
       .catch(error => {
         console.error("Error fetching polls:", error);
       });
-  }, []); // Empty dependency array to run once on mount
-
-//   {error && <div>{error}</div> }
-//   {isPending && <div>Loading...</div>}
-//   {polls && <BlogList polls={polls} title="All Polls!" user={user}/> }
+  }, []); 
+  const handleSubmit=()=>{
+    axios.post("http://localhost:4000/getpoll",{id: e.target.value.id}).then(result=>{
+      setBlog(result.data);
+      console.log(blog)})
+  .catch(err=>{
+      console.log("Axios err",err)
+  })
+  }
 
   return ( 
-    <div className="Home">
+    <div className="Submit">
     <Navbar userid={user} />
-      <h2>Home Page</h2>
+    <form onSubmit={handleSubmit}>
+                
+                <label>Enter Poll id</label>
+                <input type='text' required value={count} onChange={(e)=>setCount( parseInt(e.target.value) ? e.target.value : 0)} />
+                {!isPending && <button>Add Blog</button>}
+                {isPending && <button disabled>Adding Blog</button>}
+            </form>
+      <h2>Search Page</h2>
       {polls.length>0? (
         <a><BlogList blogs={polls} title="All Polls!" user={user}/></a>
       ) : (
@@ -40,4 +51,4 @@ const Search = () => {
   );
 }
 
-export default Home;
+export default Search;

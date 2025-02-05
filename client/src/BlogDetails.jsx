@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
+import ChartComponent from "./Chart";
 import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 const BlogDetails = () => {
@@ -10,12 +12,13 @@ const BlogDetails = () => {
     const [voted,setVoted] = useState(false)
     const [isLoading,setisLoading] = useState(false)
     const [isPending,setisPending] = useState(false)
+    // const [chartData,setChartData] = useState([])
     // var ip_address = ""
     // const {data: blog, isPending, Error} = useFetch( 'http://localhost:8000/blogs/'+id)
     useEffect(()=>{
         axios.post("http://localhost:4000/getpoll",{id}).then(result=>{
         setBlog(result.data);
-        console.log(blog)})
+        console.log("blog in blogdetails",blog)})
     .catch(err=>{
         console.log("Axios err",err)
     })},[])
@@ -63,6 +66,7 @@ const BlogDetails = () => {
     }
     return ( 
         <div className="blog-details">
+            <Navbar userid={user}/>
             {(isPending || isLoading) &&<div>Loading...</div>}
             {Error && <div>{Error}</div>}
             {blog && <article>
@@ -86,6 +90,7 @@ const BlogDetails = () => {
              {/* <button onClick={&handleClick}>Delete Poll</button> */}
              </div>
              </article>}
+             <ChartComponent id={id}/>
             </div>
 
      );

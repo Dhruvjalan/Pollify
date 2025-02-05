@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Search from './Search'
 import Signup from  './Signup'
 import Login from  './Login'
 import UserHome from './UserHome'
@@ -17,6 +17,7 @@ function App() {
       <Route path='/:user/home' element={<UserHome />}></Route>
       <Route path='/:user/create' element={<Create />}></Route>
       <Route path='/:user/:id/Detail' element={<BlogDetails />}></Route>
+      <Route path='/:user/Search/:mode' element={<BlogDetails />}></Route>
       </Routes>
     </BrowserRouter>
   )
