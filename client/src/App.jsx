@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Search from './Search'
+import Home from './Home'
 import Signup from  './Signup'
 import Login from  './Login'
 import UserHome from './UserHome'
@@ -12,6 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path='/' element={<Home />}></Route>
       <Route path='/register' element={<Signup />}></Route>
       <Route path='/login' element={<Login />}></Route>
       <Route path='/:user/home' element={<UserHome />}></Route>

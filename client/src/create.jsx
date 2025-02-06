@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import './index.css'
 import { useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -68,10 +69,11 @@ const Create = () => {
                 ))}
 
                 <label>Poll Author:</label>
-                <p>{user}</p>
+                
+                <input type='text' value={user} readOnly />
 
-                {!isPending && <button>Add Blog</button>}
-                {isPending && <button disabled>Adding Blog</button>}
+                {!isPending && <button>Post Poll</button>}
+                {isPending && <button disabled>Posting Poll</button>}
             </form>
         </div>
     );

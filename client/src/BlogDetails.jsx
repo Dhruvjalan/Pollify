@@ -89,21 +89,24 @@ const BlogDetails = () => {
 
              {blog.poll && Array.from({ length: blog.poll.length }, (_, i) => (
                     <button 
-                        className="OptionButton" 
+                        className={`OptionButton${Number(blog.voted.some(vote=>vote.user==user && vote.option_no==i))}`}
                         onClick={!voted ? HandleOptionClick : null} 
                         id={i} 
                         disabled={voted}
                     >
                         {blog.poll[i].option}  
                         { blog.voted.some(vote => vote.user === user) && ` -  (${Math.round(blog.poll[i].votes*100/blog.totalvotes)}%)`}
-                        {blog.voted.some(vote=>vote.user==user && vote.option_no==i) && `--voted`}
+                        {blog.voted.some(vote=>vote.user==user && vote.option_no==i) && ` *`}
                     </button>
                 ))}
-             {/* <button onClick={&handleClick}>Delete Poll</button> */}
+                <br />
+                {blog && blog.author === user && <button onClick={HandleDel} className="w-25">Delete</button>}
+
              </div>
              </article>}
+             <h5>How to Share this poll?</h5>
+            <p> Send the Pollid: {blog._id} and search polls by ID</p>
              {blog.voted && blog.voted.some(vote => vote.user === user) && <ChartComponent id={id}/>}
-             {blog && blog.author === user && <button onClick={HandleDel}>Delete</button>}
             </div>
 
      );

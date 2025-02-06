@@ -12,16 +12,20 @@ const ChartComponent = ({ id }) => {
         datasets: [{
             label: 'Dataset 1',
             data: [],
-            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-            borderColor: ['rgba(75, 192, 192, 1)'],
+            borderColor: ['rgba(66, 3, 22, 0.2)'],
             borderWidth: 1,
         }]
     });
+    const height = 400;
+    const width = 400;
 
     useEffect(() => {
         axios.post("http://localhost:4000/getpoll", { id })
             .then(result => {
                 const blogData = result.data;
+                const i = 1;
+                const height = blogData.height || 400;
+                const width = blogData.width || 400;
                 if (blogData && blogData.poll) {
                     const newLabels = blogData.poll.map(element => element.option);
                     const newValues = blogData.poll.map(element => element.votes);
@@ -30,7 +34,9 @@ const ChartComponent = ({ id }) => {
                         datasets: [{
                             ...data.datasets[0],
                             data: newValues,
-                        }]
+                            backgroundColor: ['rgb(241, 53, 109)','rgb(248, 94, 140)','rgb(239, 128, 161)'],
+                        }],
+                        
                     });
                 }
             })
@@ -42,7 +48,8 @@ const ChartComponent = ({ id }) => {
         plugins: {
             legend: { position: 'top' },
             title: { display: true, text: 'Poll Results' }
-        }
+        },
+        // maintainAspectRatio : false,
     };
 
     return <Pie data={data} options={options} />;

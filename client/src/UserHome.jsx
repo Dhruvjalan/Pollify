@@ -33,7 +33,7 @@ const Home = () => {
     <Navbar userid={user} />
       <h2>Home Page</h2>
       {polls.length>0? (
-        <a><BlogList blogs={polls} title="All Polls!" user={user}/></a>
+        <BlogList blogs={polls} title="All Polls!" user={user}/>
       ) : (
         <div>Loading polls...</div>
       )}    </div>

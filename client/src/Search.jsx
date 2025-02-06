@@ -17,6 +17,7 @@ const Search = () => {
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
   useEffect(() => {
+    console.log("useeffectran in search")
     axios.get("http://localhost:4000/getpolls")
       .then(response => {
         console.log("Data in Home:", response.data);
@@ -26,7 +27,7 @@ const Search = () => {
       .catch(error => {
         console.error("Error fetching polls:", error);
       });
-  }, []); // Empty dependency array to run once on mount
+  }, [searchdata,mode]); // Empty dependency array to run once on mount
 
 
   const getMode = (e)=>{
@@ -35,14 +36,17 @@ const Search = () => {
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
+
     var temp_polls=[]
-    console.log("In handleSubmit: with mode ",mode+" data "+searchdata)
+    console.log("In handleSubmit: with mode ",mode+" data "+searchdata+" of type "+typeof(searchdata))
+    console.log('67a2092bd5d936087f22fdc5'==searchdata)
 
     
     if(mode==='ByPollid'){
       polls.forEach(exactpoll=>{
-        if(exactpoll._id==searchdata){
-        temp_polls.push(exactpoll)}
+        if(exactpoll._id==searchdata.replace(/\s+/g, '')){
+        temp_polls.push(exactpoll)
+      console.log("found exact id")}
       })
     }else if(mode==='MyPolls'){
       polls.forEach(element => {
@@ -56,6 +60,8 @@ const Search = () => {
           temp_polls.push(element)
         }
       });
+    }else if(mode=='all'){
+      window.location.reload(true)
     }
 
     console.log('Temppolls',temp_polls)
@@ -74,21 +80,29 @@ const Search = () => {
     
     <div className="Home">
 <Navbar userid={user} />
+    <div className='Create'>
+    <h2>Search For Polls</h2>
+
     <form onSubmit={handleSubmit}> 
                 
                 <select name="mode" onChange={getMode}>
-                <option value="">--Select--</option>
+                <option value="all">All</option>
                 <option value="MyPolls">My Polls</option>
                 <option value="ByPollid">By Poll id</option>
                 <option value="ByTitle">By Title</option>
                 </select>
-                {mode && mode!='MyPolls'&& <label>Enter {mode}</label>}
-{                mode && mode!='MyPolls'&& <input type='text' value={searchdata} onChange={e=>setSearchData(e.target.value)}/>
+                {mode && mode!='MyPolls'&& mode!='all'&& <label>Enter {mode}</label>}
+{                mode && mode!='MyPolls'&& mode!='all'&& <input type='text' value={searchdata} onChange={e=>{
+                    setSearchData(e.target.value)
+                    
+                    }}/>
 }                {!isPending && <button type='submit'>Search</button>}
                 {isPending && <button disabled>Searching...</button>}
-            </form>    <h2>{text}</h2> 
-      {polls.length>0? (
-        <a><BlogList blogs={polls} title={"All Polls!"} user={user}/></a>
+            </form> 
+      </div>      
+
+      {polls.length>=0? (
+        <BlogList blogs={polls} title={text} user={user}/>
       ) : (
         <div>Loading polls...</div>
       )}    </div>

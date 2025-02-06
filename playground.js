@@ -1,2 +1,8 @@
 var title = "Will Trump Triumph"
-console.log(title.includes(" p Tri"))
+
+var titleWithoutSpaces = title.replace(/\s+/g, '');
+// console.log(titleWithoutSpaces);
+// console.log(typeof(title));
+
+console.log("this "+Number(1===1)+1)
+console.log("this "+Number(1===2))
