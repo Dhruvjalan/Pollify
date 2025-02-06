@@ -69,6 +69,7 @@ h3{
   align-self: center;
   /* background-color: black; */
   margin-top: 5rem;
+  width: auto
   
 }
 .LandingHome h1{
@@ -92,11 +93,11 @@ h3{
   color: black
 }
 
-/* canvas{
-  width: 800px !important;
-  height: 800px !important;
+canvas{
+  
   align-self : center;
-} */
+  margin: 5rem
+}
   /* background-color: black; */
 
 

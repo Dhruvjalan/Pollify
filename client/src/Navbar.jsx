@@ -6,6 +6,8 @@ const Navbar = ({userid}) => {
         <nav className="navbar">
             <h1>Pollify</h1>
             <div className='Links'>
+            <Link to={`/`}>LogOut</Link>
+
             <Link to={`/${userid}/home`}>Home</Link>
             <Link to={`/${userid}/Search`}>Search</Link>
             

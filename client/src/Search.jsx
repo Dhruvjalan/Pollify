@@ -17,10 +17,8 @@ const Search = () => {
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
   useEffect(() => {
-    console.log("useeffectran in search")
     axios.get("http://localhost:4000/getpolls")
       .then(response => {
-        console.log("Data in Home:", response.data);
         setPolls(response.data);
         // setIsPending(false)
       })
@@ -32,21 +30,18 @@ const Search = () => {
 
   const getMode = (e)=>{
     setMode(e.target.value)
-    console.log("Mode selected: ",e.target.value)
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
 
     var temp_polls=[]
-    console.log("In handleSubmit: with mode ",mode+" data "+searchdata+" of type "+typeof(searchdata))
-    console.log('67a2092bd5d936087f22fdc5'==searchdata)
 
     
-    if(mode==='ByPollid'){
+    if(mode==='Poll-Id'){
       polls.forEach(exactpoll=>{
         if(exactpoll._id==searchdata.replace(/\s+/g, '')){
         temp_polls.push(exactpoll)
-      console.log("found exact id")}
+      }
       })
     }else if(mode==='MyPolls'){
       polls.forEach(element => {
@@ -54,7 +49,7 @@ const Search = () => {
           temp_polls.push(element)
         }
       });
-    }else if(mode==='ByTitle'){
+    }else if(mode==='Title'){
       polls.forEach(element => {
         if(element.title.includes(searchdata)){
           temp_polls.push(element)
@@ -64,7 +59,6 @@ const Search = () => {
       window.location.reload(true)
     }
 
-    console.log('Temppolls',temp_polls)
     if(temp_polls.length===1)
       setText("You Have 1 Match")
     else
@@ -88,8 +82,8 @@ const Search = () => {
                 <select name="mode" onChange={getMode}>
                 <option value="all">All</option>
                 <option value="MyPolls">My Polls</option>
-                <option value="ByPollid">By Poll id</option>
-                <option value="ByTitle">By Title</option>
+                <option value="Poll-Id">By Poll id</option>
+                <option value="Title">By Title</option>
                 </select>
                 {mode && mode!='MyPolls'&& mode!='all'&& <label>Enter {mode}</label>}
 {                mode && mode!='MyPolls'&& mode!='all'&& <input type='text' value={searchdata} onChange={e=>{

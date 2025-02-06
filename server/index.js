@@ -26,10 +26,10 @@ mongoose.connect(MONGO_CONNST + DBNAME, {
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
   
   app.post('/login',(req,res)=>{
-    console.log("req on line 29",req)
     const {name,password} = req.body;
     UserModel.findOne({name: name}).then(user=>{
       if(user){
+  
         if(user.password == password){
           res.json("Success")
         }else{
@@ -47,20 +47,18 @@ mongoose.connect(MONGO_CONNST + DBNAME, {
       .catch(err => res.status(500).json({ error: err.message }));
   });
 app.post('/register',(req,res)=>{
+  
     UserModel.create(req.body).then(user=> res.json(user)).catch(err=>res.json(err))
-    // console.log("Entered 1 user")
 })
 
 app.post('/insertpoll',(req,res)=>{
   PollModel.create(req.body).then(poll=> res.json(poll)).catch(err=>res.json(err))
-  // console.log("Entered 1 poll")
 })
 
 app.post('/getpoll',(req,res)=>{
   const {id} = req.body;
   PollModel.findOne({_id: new ObjectId(id)}).then(poll=>{
     res.json(poll)
-    // console.log("poll: ",poll)
   })
 })
 
@@ -106,7 +104,6 @@ app.delete('/delpoll', (req, res) => {
           return res.status(404).json({ success: false, message: "Poll not found" });
         }
         res.json(deletedPoll);
-        console.log("deleted: ",deletedPoll)
       })
       .catch(error => {
         res.status(500).json({ success: false, message: "Error deleting poll", error: error.message });
