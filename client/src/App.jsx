@@ -16,7 +16,6 @@ function App() {
       <Route path='/' element={<Home />}></Route>
       <Route path='/register' element={<Signup />}></Route>
       <Route path='/login' element={<Login />}></Route>
-      <Route path='https://dhruvjalan.github.io/Pollify/login' element={<Login />}></Route>
       <Route path='/:user/home' element={<UserHome />}></Route>
       <Route path='/:user/create' element={<Create />}></Route>
       <Route path='/:user/:id/Detail' element={<BlogDetails />}></Route>
