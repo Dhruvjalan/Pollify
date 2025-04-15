@@ -7,7 +7,7 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/getpolls")
+    axios.get("http://localhost:4000/getuserdata")
       .then(response => {
         console.log("Data in Home:", response.data);
         setData(response.data);

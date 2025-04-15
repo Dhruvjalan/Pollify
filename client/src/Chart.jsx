@@ -6,7 +6,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const ChartComponent = ({ id }) => {
+const ChartComponent = ({ name }) => {
     const [data, setData] = useState({
         labels: [],
         datasets: [{
@@ -20,15 +20,15 @@ const ChartComponent = ({ id }) => {
     const width = 400;
 
     useEffect(() => {
-        axios.post("http://localhost:4000/getpoll", { id })
+        axios.post("http://localhost:4000/getuserdata", { name })
             .then(result => {
-                const blogData = result.data;
+                const userData = result.data;
                 const i = 1;
-                const height = blogData.height || 400;
-                const width = blogData.width || 400;
-                if (blogData && blogData.poll) {
-                    const newLabels = blogData.poll.map(element => element.option);
-                    const newValues = blogData.poll.map(element => element.votes);
+                const height = userData.height || 400;
+                const width = userData.width || 400;
+                if (userData && userData.Expenditure) {
+                    const newLabels = userData.Expenditure.map(element => element.title);
+                    const newValues = userData.Expenditure.map(element => element.Spent);
                     setData({
                         labels: newLabels,
                         datasets: [{
@@ -41,13 +41,13 @@ const ChartComponent = ({ id }) => {
                 }
             })
             .catch(err => console.log("Axios error:", err));
-    }, [id]); // Only depend on `id`
+    }, []); // Only depend on `id`
 
     const options = {
         responsive: true,
         plugins: {
             legend: { position: 'top' },
-            title: { display: true, text: 'Poll Results' }
+            title: { display: true, text: 'Expenditure' }
         },
         // maintainAspectRatio : false,
     };

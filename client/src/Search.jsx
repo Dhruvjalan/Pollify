@@ -1,4 +1,4 @@
-import BlogList from './BlogList';
+import TodoList from './TodoList';
 import Navbar from './Navbar';
 import useFetch from './useFetch';
 import { useEffect, useState } from 'react';
@@ -17,7 +17,7 @@ const Search = () => {
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
   useEffect(() => {
-    axios.get("http://localhost:4000/getpolls")
+    axios.get("http://localhost:4000/getuserdata")
       .then(response => {
         setPolls(response.data);
         // setIsPending(false)
@@ -96,7 +96,7 @@ const Search = () => {
       </div>      
 
       {polls.length>=0? (
-        <BlogList blogs={polls} title={text} user={user}/>
+        <TodoList blogs={polls} title={text} user={user}/>
       ) : (
         <div>Loading polls...</div>
       )}    </div>

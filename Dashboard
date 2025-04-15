@@ -1,0 +1,12 @@
+to include in dashboard
+
+todolist
+calendar
+screen time count
+expenditure chart
+Notes
+Weather from api
+
+
+connection string
+mongodb://localhost:27017/
