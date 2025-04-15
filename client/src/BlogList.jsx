@@ -12,7 +12,10 @@ function BlogList({ blogs, title, user }) {
       <h2>{title}</h2>
       {blogs.length===0 || blogs.map(blog => (
         <div className='blog-preview' key={blog._id}>
-          <Link to={`/${user}/${blog._id}/detail`}><h3>{blog.title}</h3></Link>
+          <Link to={`/${user}/${blog._id}/detail`}>
+          <h3>{blog.title}</h3>
+          <p>Posted By: {blog.author}</p>
+          </Link>
           
         </div>
       ))}
