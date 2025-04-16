@@ -9,14 +9,8 @@ const Navbar = ({userid}) => {
             <Link to={`/`}>LogOut</Link>
 
             <Link to={`/${userid}/home`}>Home</Link>
-            <Link to={`/${userid}/Search`}>Search</Link>
             
-            <Link to={`/${userid}/create`} style={{
-                color: "white",
-                backgroundColor: '#f1356d',
-                borderRadius: '8px'
-            }}>New Poll</Link>
-                
+                          
             </div>
         </nav>
      );

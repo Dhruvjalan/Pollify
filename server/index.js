@@ -75,7 +75,7 @@ app.put('/updateuserdata/:id', async (req, res) => {
 
 app.put('/addtodo', async (req, res) => {
   const { name, todoItem } = req.body;
-
+  console.log(`name=%{name} and todo=%{todoItem}`)
   if (!name || !todoItem) {
     return res.status(400).json({ error: "Missing <name> or <todoItem>" });
   }
@@ -83,7 +83,7 @@ app.put('/addtodo', async (req, res) => {
   try {
     const updatedUser = await UserModel.findOneAndUpdate(
       { name },
-      { $push: { Todo: todoItem } },
+      { $addToSet: { Todo: todoItem } },
       { new: true }
     );
     if (!updatedUser) return res.status(404).json({ message: "User not found" });
@@ -93,18 +93,37 @@ app.put('/addtodo', async (req, res) => {
   }
 });
 
-app.put('/deletetodo', async (req, res) => {
-  const { name, todoItem } = req.body;
+//updatetodo
+app.put('/edittodo', async (req, res) => {
+  const { name, index, todoItem } = req.body;
+  console.log(`name=${name} and todo=${todoItem}`);
 
-  if (!name || !todoItem) {
-    return res.status(400).json({ error: "Missing <name> or <todoItem>" });
+  try {
+    // Find the user and update the Todo array at the specified index
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { name },
+      { $set: { [`Todo.${index}`]: todoItem } },  // Use this to access the item by its index
+      { new: true }
+    );
+    
+    if (!updatedUser) return res.status(404).json({ message: "User not found" });
+
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
+});
+
+
+app.delete('/deletetodo', async (req, res) => {
+  const { name, todoItem } = req.body;
+  
 
   try {
     const updatedUser = await UserModel.findOneAndUpdate(
       { name },
       { $pull: { Todo: todoItem } },
-      { new: true }
+      {new: true}
     );
     if (!updatedUser) return res.status(404).json({ message: "User not found" });
     res.json(updatedUser);
@@ -112,6 +131,7 @@ app.put('/deletetodo', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 
 app.listen(PORT, () => console.log("Server Running on port", PORT));

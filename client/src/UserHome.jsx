@@ -15,16 +15,16 @@ const Home = () => {
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
   useEffect(() => {
-    console.log('line 18 in userhome');
+    // console.log('line 18 in userhome');
     axios.post("http://localhost:4000/getuserdata", {
       name: user  // <user> is your logged-in username
     })
     .then(response => {
-      console.log("21 in userhome");
-      console.log("Data in Home:", response.data);
+      // console.log("21 in userhome");
+      // console.log("Data in Home:", response.data);
       setData(response.data);
-      console.log(data)
-      console.log('screentime=',data.screentime_min)
+      // console.log(data)
+      // console.log('screentime=',data.screentime_min)
     })
     .catch(error => {
       console.error("Error fetching user data:", error);
@@ -33,8 +33,8 @@ const Home = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("Updated data:", data);
-      console.log("screentime =", data.Todo);
+      // console.log("Updated data:", data);
+      // console.log("screentime =", data.Todo);
     }
   }, [data]);
   

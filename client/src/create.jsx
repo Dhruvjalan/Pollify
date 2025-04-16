@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import axios from 'axios';
 
 
-const Create = () => {
+const Create_old = () => {
     var n=1;
     const navigate = useNavigate()
     const {user} = useParams()
@@ -60,4 +60,4 @@ const Create = () => {
         </div>
     );
 }
-export default Create;
+export default Create_old;
