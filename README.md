@@ -28,3 +28,6 @@ Pollify is more than just a polling site—it’s a platform for opinions, discu
 
 🚀 Join the conversation, create your poll, and make your voice heard today!
 
+
+Video of Running Site: https://drive.google.com/file/d/1ZUpmUsF79a3HFgr7gOV2m1kn0Qz1qX7C/view?usp=sharing
+
