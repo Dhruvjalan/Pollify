@@ -35,13 +35,15 @@ https://drive.google.com/file/d/1ZUpmUsF79a3HFgr7gOV2m1kn0Qz1qX7C/view?usp=drive
 1. Download and extract zip into a folder
 2. Open the folder '../Pollify-FINAL' in a trusted IDE
 3. Configure the Server Side
+
     a.Open the Terminal or Powershell at the location of '../Pollify-Final/server'
    
     b.<pre>```<../Pollify-Final/server>npm i```</pre>
    
     c.<pre>```<../Pollify-Final/server>npm run```</pre> 
 3. Configure the Client Side
-    a.Open another window of Terminal or Powershell at the location of '../Pollify-Final/client'
+
+   a.Open another window of Terminal or Powershell at the location of '../Pollify-Final/client'
    
     b.<pre>```<../Pollify-Final/client>npm i```</pre>
    
