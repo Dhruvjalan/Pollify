@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const Navbar = ({userid}) => {
     return ( 
         <nav className="navbar">
-            <h1>Pollify</h1>
+            <h1>My. Dash</h1>
             <div className='Links'>
             <Link to={`/`}>LogOut</Link>
 

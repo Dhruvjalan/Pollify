@@ -6,7 +6,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const ChartComponent = ({ name }) => {
+const ChartComponent = ({ name,title,cutout }) => {
     const [data, setData] = useState({
         labels: [],
         datasets: [{
@@ -34,7 +34,7 @@ const ChartComponent = ({ name }) => {
                         datasets: [{
                             ...data.datasets[0],
                             data: newValues,
-                            backgroundColor: ['rgb(241, 53, 109)','rgb(248, 94, 140)','rgb(239, 128, 161)'],
+                            backgroundColor: ['#00BFFF	','#00FFFF	','#7DF9FF'],
                         }],
                         
                     });
@@ -45,14 +45,20 @@ const ChartComponent = ({ name }) => {
 
     const options = {
         responsive: true,
+        cutout,
         plugins: {
             legend: { position: 'top' },
-            title: { display: true, text: 'Expenditure' }
+            title: { display: true, text: title }
         },
+
         // maintainAspectRatio : false,
     };
 
-    return <Pie data={data} options={options} />;
+    return (
+        <div style={{ width: 'auto', margin: '0 auto' }}>
+            <Pie data={data} options={options} />
+        </div>
+        );
 };
 
 export default ChartComponent;

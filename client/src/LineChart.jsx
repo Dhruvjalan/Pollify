@@ -7,7 +7,7 @@ import axios from "axios";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement);
 
-const ScChartComponent = () => {
+const LineChart = () => {
     // const [data, setData] = useState({
     //     labels: [],
     //     datasets: [{
@@ -76,4 +76,4 @@ const ScChartComponent = () => {
     );
 };
 
-export default ScChartComponent;
+export default LineChart;

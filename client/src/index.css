@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --link-color: #f1356d;
-  --card-bg: #fafafa;
-  --btn-bg: #f1356d;
+  --bg-color: #e6f0ff;           
+  --text-color: #0b1e3d;         
+  --link-color: #1e90ff;         
+  --card-bg: #f0f8ff;            
+  --btn-bg: #1e90ff;             
   --btn-color: #ffffff;
-  --nav-border: #e0e0e0;
+  --nav-border: #b0c4de;         
 }
 
 [data-theme="dark"] {
-  --bg-color: #1e1e2f;
-  --text-color: #f1f1f1;
-  --link-color: #ff6b9e;
-  --card-bg: #2c2c3e;
-  --btn-bg: #ff4f81;
+  --bg-color: #001f3f;          
+  --text-color: #aee7ff;         
+  --link-color: #00bfff;         
+  --card-bg: #002b5c;            
+  --btn-bg: #00bfff;             
   --btn-color: #ffffff;
-  --nav-border: #2c2c3e;
+  --nav-border: #003366;         
 }
+
 
 * {
   margin: 0;
@@ -50,6 +51,12 @@ body {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
+}
+
+.habitscontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .blog-preview {
@@ -97,6 +104,15 @@ h3 {
 
 .LandingHome button a {
   color: var(--btn-color);
+  text-decoration: none;
+}
+
+.button {
+  background-color: 'black';
+  color: var(--btn-color);
+}
+
+Link{
   text-decoration: none;
 }
 

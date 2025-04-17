@@ -39,24 +39,16 @@ const TodoList = ({ todos, title }) => {
 
   return (
     <div className='todo-list'>
-<Link to={`/${user}/create`} style={{
-                color: "white",
-                backgroundColor: '#f1356d',
-                borderRadius: '8px'
-            }}>New Todo</Link>      <h2>{title}</h2>
+    <Link to={`/${user}/create`} style={{background:'#01DFFF',borderRadius:'0.2rem',borderColor:'#000000',borderWidth:'1px',color:'white',textDecoration:'none',margin:'0 0.5rem', padding:'0.2rem 0.5rem' }}>New Todo</Link>      <h2>{title}</h2>
       {todos.length === 0 ? (
         <div>No todos</div>
       ) : (
         todos.map((todo, index) => (
           <div className='todo-preview' key={index}>
             <h3>{todo}</h3>
-            <button onClick={() => HandleDel(index)}>Delete</button>
+            <button onClick={() => HandleDel(index)} style={{background:'#1e90ff',borderRadius:'0.4rem',color:'white', margin:'0 0.5rem',padding:"0 0.2rem"}}>Delete</button>
             {/* <button onClick={() => HandleEdit(index)}>Edit</button> */}
-            <Link to={`/${user}/edit/${index}`} style={{
-                color: "white",
-                backgroundColor: '#f1356d',
-                borderRadius: '8px'
-            }}>Edit</Link>
+            <Link to={`/${user}/edit/${index}`} style={{background:'#00BFFF',borderRadius:'0.2rem',borderColor:'#000000',borderWidth:'1px',color:'white',textDecoration:'none',margin:'0 0.5rem', padding:'0.2rem 0.5rem' }}>Edit</Link>
           </div>
         ))
       )}

@@ -1,7 +1,9 @@
 import TodoList from './TodoList';
 import Navbar from './Navbar';
 import useFetch from './useFetch';
-import ScChartComponent from './ScreentimeChart.jsx'
+import ScChartComponent from './BarChart.jsx'
+import Habits from './Habits.jsx';
+import Money from './Money.jsx';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ChartComponent from "./ExpenditureChart";
@@ -47,23 +49,24 @@ const Home = () => {
     <div className="Home">
     <div>
     <Navbar userid={user} />
-      <h2>Home Page</h2>
+      <h1>Home Page</h1>
 
-      <div class='linechart'>
-      <ScChartComponent />
-      </div>
-      
+      <Habits />
+
+      <Money />
+      <div class='d-flex flex-row justify-contents-evenly'>
       <div class='calendar'>
-      <iframe
-  src="https://calendar.google.com/calendar/embed?src=&ctz=Kolkata/India"
-  style={{ border: 0 }}
-  width="800"
-  height="600"
-/>      </div>
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=&ctz=Kolkata/India"
+          style={{ border: 0 }}
+          width="800"
+          height="600"
+        />      
+      </div>
       {data?.Todo && (
         <TodoList todos={data.Todo} title="All Todos!"/>
       )}    </div>
-      
+      </div>
 
 
  

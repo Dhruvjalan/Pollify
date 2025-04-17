@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const Counter = ({n}) => {
+const Counter = ({n, pre, post}) => {
   const counterRef = useRef(null);
 
   useEffect(() => {
@@ -28,12 +28,20 @@ const Counter = ({n}) => {
   }, []);
 
   return (
+    <div class='counter d-flex flex-row'>
+      <div style={{fontSize:"2rem",color:'#1e90ff',alignSelf:'flex-end',margin:'0 0 1rem 1rem',}}>
+      {''?!pre:pre}
+    </div>
     <div
       ref={counterRef}
       className="counter"
-      style={{ fontSize: "3rem", fontWeight: "bold" }}
+      style={{ fontSize: "5rem", fontWeight: "bold" ,color: '#1e90ff' }}
     >
       0
+    </div>
+    <div style={{fontSize:"2rem",color:'#1e90ff',alignSelf:'flex-end',margin:'0 0 1rem 1rem',}}>
+      {''?!post:post}
+    </div>
     </div>
   );
 };
