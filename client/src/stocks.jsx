@@ -1,12 +1,12 @@
 import React from "react";
 
-function Stocks() {
-    const stockData = [
-        { name: "Apple", price: 150, change: "+2%"},
-        { name: "Google", price: 2800, change: "-1.5%"},
-        { name: "Amazon", price: 3400, change: "+0.8%"},
-        { name: "Tesla", price: 900, change: "-3%"},
-    ];
+function Stocks({stockData}) {
+    // const stockData = [
+    //     { name: "Apple", price: 150, change: "+2%"},
+    //     { name: "Google", price: 2800, change: "-1.5%"},
+    //     { name: "Amazon", price: 3400, change: "+0.8%"},
+    //     { name: "Tesla", price: 900, change: "-3%"},
+    // ];
 
     return (
         <div>

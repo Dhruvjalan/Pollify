@@ -7,7 +7,7 @@ import axios from "axios";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement);
 
-const BarChart = () => {
+const BarChart = ({bardata}) => {
     // const [data, setData] = useState({
     //     labels: [],
     //     datasets: [{
@@ -48,7 +48,7 @@ const BarChart = () => {
         labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
         datasets: [{
             labels: 'Sales of the Week',
-            data:[6,3,9,5,8,2,10],
+            data:bardata,
             backgroundColor: 'aqua',
             borderColor: 'black',
             pointBorderColor: 'aqua'
@@ -57,13 +57,13 @@ const BarChart = () => {
     const options = {
         responsive: true,
         plugins: {
-            legend: {display:true},
+            legend: {display:false},
             title: { display: true, text: 'Expenditure' }
         },
         scales:{
             y:{
-                min:0,
-                max:12
+                min:Math.min(...bardata)*0.8,
+                max:Math.min(...bardata)*1.2
             },
         }
         // maintainAspectRatio : false,

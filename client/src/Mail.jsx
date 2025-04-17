@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 // import './MailCard.css'; // CSS file or use inline styles
 
-const MailCard = () => {
+const MailCard = ({maillist}) => {
   
-  const maillist = [
+  const maillist1 = [
     {
       subject: 'Dhruv Jalan, complete our 2-minute survey to win a prize',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'

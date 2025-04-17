@@ -53,9 +53,13 @@ const Home = () => {
     <Navbar userid={user} />
       <h1>Home Page</h1>
 
-      <Habits />
+      {data?.habits&&(
+        <Habits data={data.habits} name={user}/>
+      )}
+      
+{data?.money&&(<Money data={data.money} name={user}/>)}
+      
 
-      <Money />
       <div class='d-flex flex-row justify-content-evenly' style={{margin: "5rem 1rem"}}>
       <div class='calendar'>
         <iframe
@@ -76,8 +80,10 @@ const Home = () => {
       <textarea value={data.Notes} style={{ fontSize: '20px', padding: '10px', width: '100%' }} readOnly />
     )}</p>
   </div></div></div>
-
-  <MailCard />
+  
+  {data?.maillist && (
+      <MailCard maillist={data.maillist}/>
+  )}
       </div>
 
 

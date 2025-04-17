@@ -6,42 +6,42 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const ChartComponent = ({ name,title,cutout }) => {
+const ChartComponent = ({ name,title,cutout,piedata }) => {
     const [data, setData] = useState({
-        labels: [],
+        labels: piedata.map(item => item.title.toLowerCase()),
         datasets: [{
             label: 'Dataset 1',
-            data: [],
-            borderColor: ['rgba(66, 3, 22, 0.2)'],
+            data: piedata.map(item => item.value),
+            backgroundColor: ['#00BFFF	','#00FFFF	','#7DF9FF'],
             borderWidth: 1,
         }]
     });
     const height = 400;
     const width = 400;
 
-    useEffect(() => {
-        axios.post("http://localhost:4000/getuserdata", { name })
-            .then(result => {
-                const userData = result.data;
-                const i = 1;
-                const height = userData.height || 400;
-                const width = userData.width || 400;
-                if (userData && userData.Expenditure) {
-                    const newLabels = userData.Expenditure.map(element => element.title);
-                    const newValues = userData.Expenditure.map(element => element.Spent);
-                    setData({
-                        labels: newLabels,
-                        datasets: [{
-                            ...data.datasets[0],
-                            data: newValues,
-                            backgroundColor: ['#00BFFF	','#00FFFF	','#7DF9FF'],
-                        }],
+    // useEffect(() => {
+    //     axios.post("http://localhost:4000/getuserdata", { name })
+    //         .then(result => {
+    //             const userData = result.data;
+    //             const i = 1;
+    //             const height = userData.height || 400;
+    //             const width = userData.width || 400;
+    //             if (userData && userData.Expenditure) {
+    //                 const newLabels = userData.Expenditure.map(element => element.title);
+    //                 const newValues = userData.Expenditure.map(element => element.Spent);
+    //                 setData({
+    //                     labels: newLabels,
+    //                     datasets: [{
+    //                         ...data.datasets[0],
+    //                         data: newValues,
+    //                         backgroundColor: ['#00BFFF	','#00FFFF	','#7DF9FF'],
+    //                     }],
                         
-                    });
-                }
-            })
-            .catch(err => console.log("Axios error:", err));
-    }, []); // Only depend on `id`
+    //                 });
+    //             }
+    //         })
+    //         .catch(err => console.log("Axios error:", err));
+    // }, []); // Only depend on `id`
 
     const options = {
         responsive: true,
