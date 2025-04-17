@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ChartComponent from "./ExpenditureChart";
 import Counter from './counter';
+import MailCard from './Mail'
+
 import { useParams } from 'react-router-dom';
 import { Link  } from "react-router-dom"
 
@@ -54,7 +56,7 @@ const Home = () => {
       <Habits />
 
       <Money />
-      <div class='d-flex flex-row justify-contents-evenly'>
+      <div class='d-flex flex-row justify-content-evenly' style={{margin: "5rem 1rem"}}>
       <div class='calendar'>
         <iframe
           src="https://calendar.google.com/calendar/embed?src=&ctz=Kolkata/India"
@@ -63,14 +65,25 @@ const Home = () => {
           height="600"
         />      
       </div>
+      <div class=' todo_notes d-flex flex-row flex-wrap' style={{margin:'0 2rem'}}>
       {data?.Todo && (
         <TodoList todos={data.Todo} title="All Todos!"/>
-      )}    </div>
+      )}    
+
+<div class='notes align-self-center justify-self-center w-auto'>
+  <h3>Notes</h3>
+    <p>{data?.Notes &&(
+      <textarea value={data.Notes} style={{ fontSize: '20px', padding: '10px', width: '100%' }} readOnly />
+    )}</p>
+  </div></div></div>
+
+  <MailCard />
       </div>
 
 
+
  
-<div class='Expenditure Chart'>
+{/* <div class='Expenditure Chart'>
 <ChartComponent name={user} ></ChartComponent>
 </div> 
 
@@ -78,12 +91,8 @@ const Home = () => {
   {data?.screentime_min && (
     <Counter n={data.screentime_min} />
   )}  
-  </div>
-  <div class='notes'>
-    <p>{data?.Notes &&(
-      <p>{data.Notes}</p>
-    )}</p>
-  </div>
+  </div> */}
+  
 </div>
 
   );

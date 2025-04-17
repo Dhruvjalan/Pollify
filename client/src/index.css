@@ -2,6 +2,7 @@
 
 :root {
   --bg-color: #e6f0ff;           
+  --bg-color: #001f3f;          
   --text-color: #0b1e3d;         
   --link-color: #1e90ff;         
   --card-bg: #f0f8ff;            
@@ -27,10 +28,12 @@
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
   color: var(--text-color);
+  
 }
 
 body {
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+  background-color: '#001f3f';
 }
 
 .navbar {
@@ -159,4 +162,27 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(21px);
+}
+/* ------------- */
+
+.mail-card {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 300px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.mail-subject {
+  margin: 0;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.mail-body {
+  margin-top: 0.5rem;
+  color: #333;
 }
