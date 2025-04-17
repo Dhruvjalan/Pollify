@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
-import ChartComponent from "./Chart";
+import ChartComponent from './ExpenditureChart';
 import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 const BlogDetails = () => {

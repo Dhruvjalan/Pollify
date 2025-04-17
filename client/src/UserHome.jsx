@@ -1,9 +1,10 @@
 import TodoList from './TodoList';
 import Navbar from './Navbar';
 import useFetch from './useFetch';
+import ScChartComponent from './ScreentimeChart.jsx'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ChartComponent from "./Chart";
+import ChartComponent from "./ExpenditureChart";
 import Counter from './counter';
 import { useParams } from 'react-router-dom';
 import { Link  } from "react-router-dom"
@@ -47,9 +48,11 @@ const Home = () => {
     <div>
     <Navbar userid={user} />
       <h2>Home Page</h2>
-      {data?.Todo && (
-        <TodoList todos={data.Todo} title="All Todos!"/>
-      )}    </div>
+
+      <div class='linechart'>
+      <ScChartComponent />
+      </div>
+      
       <div class='calendar'>
       <iframe
   src="https://calendar.google.com/calendar/embed?src=&ctz=Kolkata/India"
@@ -57,6 +60,10 @@ const Home = () => {
   width="800"
   height="600"
 />      </div>
+      {data?.Todo && (
+        <TodoList todos={data.Todo} title="All Todos!"/>
+      )}    </div>
+      
 
 
  

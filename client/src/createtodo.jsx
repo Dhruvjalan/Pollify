@@ -25,6 +25,7 @@ const Create = () => {
         })
         .catch(err => console.log("Axios Error: ", err))
         navigate(`/${user}/home`)
+        navigate(0)
 
 
         

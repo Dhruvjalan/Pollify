@@ -9,6 +9,12 @@ const Navbar = ({userid}) => {
             <Link to={`/`}>LogOut</Link>
 
             <Link to={`/${userid}/home`}>Home</Link>
+            <div class="theme-toggle">
+                <label class="switch">
+                <input type="checkbox" id="themeSwitch" />
+                <span class="slider"></span>
+                </label>
+            </div>
             
                           
             </div>
