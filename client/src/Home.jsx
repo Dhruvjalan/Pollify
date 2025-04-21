@@ -3,61 +3,67 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div className="Create LandingHome">
+        <div className="Create LandingHome" style={{margin:'10rem'}}>
             <h1>Homepage</h1>
-            <p>Welcome to Pollify!</p>
             <button><Link to='/login'>Login</Link></button>
-            <button><Link to='/register'>Register</Link></button>
-            <h1>Polllify – A Beautiful & Interactive Polling Website</h1>
+            <h1>LifeBoard – A Beautiful & Interactive Personal Dashboard Website</h1>
     
-    <h2>Introduction</h2>
-    <p>Polllify is a dynamic and engaging polling platform where users can create, participate in, and explore polls seamlessly. Designed with a sleek and interactive UI, the website encourages open discussions and data-driven insights through real-time statistics and sharing capabilities.</p>
-    
-    <h2>Key Features</h2>
-    
-    <h3>Create & Manage Polls</h3>
-    <ul>
-        <li>Users can post their own polls effortlessly with customizable options.</li>
-        <li>Ability to delete polls when they are no longer relevant.</li>
-        <li>Live updates on poll participation.</li>
-    </ul>
-    
-    <h3>Real-Time Poll Statistics</h3>
-    <ul>
-        <li>Once a user votes, they gain access to detailed analytics of the poll.</li>
-        <li>Visual data representation (graphs, charts) to showcase voting trends.</li>
-    </ul>
-    
-    <h3>Search & Discover Polls</h3>
-    <ul>
-        <li>A smart search feature allows users to find polls based on keywords or categories.</li>
-        <li>Users can browse trending polls for popular discussions.</li>
-    </ul>
-    
-    <h3>Participate & Engage</h3>
-    <ul>
-        <li>Vote on polls with a single click.</li>
-        <li>Option to add comments or discuss poll topics.</li>
-    </ul>
-    
-    <h3>Share Polls Easily</h3>
-    <ul>
-        <li>Share polls via social media, email, or direct links.</li>
-        <li>Embed polls on external websites for wider participation.</li>
-        <li>You can also share the unique poll-ids and let you friends participate in polls.</li>
-    </ul>
-    
-    <h2>User Experience & Design</h2>
-    <ul>
-        <li>Minimalist and modern UI, making navigation smooth.</li>
-        <li>Mobile-responsive design ensures accessibility across devices.</li>
-    </ul>
-    
-    <h2>Why Polllify?</h2>
-    <p>Polllify is more than just a polling site—it's a platform for opinions, discussions, and insights. Whether you're conducting a survey, gathering feedback, or just curious about public opinion, Polllify makes it easy, engaging, and fun!</p>
-    
-    <p>🚀 Join the conversation, create your poll, and make your voice heard today!</p>
-        </div>
+            <h2>Introduction</h2>
+<p>Welcome to <strong>LifeBoard</strong> — your all-in-one personal productivity and lifestyle dashboard. From tracking daily habits and screen time to managing finances, emails, calendars, and todos — LifeBoard seamlessly brings together everything you need to stay on top of your day.</p>
+
+<h2>Key Features</h2>
+
+<h3> Habit & Screen Time Tracker</h3>
+<ul>
+    <li>Track your screen usage across devices and monitor digital wellbeing.</li>
+    <li>Set daily or weekly goals to build positive habits.</li>
+    <li>Visualize your progress with intuitive charts.</li>
+</ul>
+
+<h3> Finance Overview</h3>
+<ul>
+    <li>Log your daily expenses and categorize them for better budgeting.</li>
+    <li>Track investments and stock watchlists all in one place.</li>
+    <li>Real-time insights into your spending habits and financial trends.</li>
+</ul>
+
+<h3> Mails & Communication</h3>
+<ul>
+    <li>Centralized inbox view for all your linked email accounts.</li>
+    <li>Quick actions like archiving, flagging, or deleting from the dashboard.</li>
+</ul>
+
+<h3> Calendar & Scheduling</h3>
+<ul>
+    <li>Integrated calendar to view and manage your events, deadlines, and reminders.</li>
+    <li>Syncs with Google Calendar or iCal for real-time updates.</li>
+</ul>
+
+<h3> Robust Todo System (Server-Side)</h3>
+<ul>
+    <li>Create, edit, and delete tasks with full backend support for reliability.</li>
+    <li>Todos persist across sessions and devices thanks to server-side architecture.</li>
+    <li>Organize tasks with categories, due dates, and priority flags.</li>
+</ul>
+
+<h3> Notes & Quick Thoughts</h3>
+<ul>
+    <li>Maintain personal notes for ideas, logs, or important information.</li>
+    <li>Color-coded sticky notes and rich text support.</li>
+</ul>
+
+<h2>User Experience & Design</h2>
+<ul>
+    <li>Clean and modern UI focused on productivity.</li>
+    <li>Fully responsive design — works flawlessly on phones, tablets, and desktops.</li>
+    <li>Dark/light theme toggle for comfortable use anytime.</li>
+</ul>
+
+<h2>Why LifeBoard?</h2>
+<p><strong>LifeBoard</strong> isn’t just another dashboard — it's a command center for your day. Whether you're managing your time, finances, or to-dos, LifeBoard brings everything together into a smart, efficient experience that actually helps you get things done.</p>
+
+<p> Start taking control of your life today — one dashboard to rule them all!</p>
+</div>
     );
 }
 

@@ -15,8 +15,8 @@ const Login = () => {
         axios.post('http://localhost:4000/login', { name, password })
         .then(result =>{ 
             console.log(result)
-            if(result.data === 'Success'){
-                navigate(`/${name}/home`)
+            if(result.data.message === 'Success'){
+                navigate(`/${result.data._id}/home`)
             }
             setText(result.data)
 
@@ -55,7 +55,7 @@ const Login = () => {
                             className="form-control rounded-0" 
                             onChange={e=>setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-success w-100 rounded-0" onClick={handleSubmit} style={{ backgroundColor: '#f1356d' }}>
+                    <button type="submit" className="btn btn-success w-100 rounded-0" onClick={handleSubmit} style={{backgroundColor: '#1e90ff'}}>
                         Login
                     </button>
                     </form>

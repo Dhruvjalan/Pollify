@@ -28,8 +28,8 @@ const Counter = ({n, pre, post}) => {
   }, []);
 
   return (
-    <div class='counter d-flex flex-row'>
-      <div style={{fontSize:"2rem",color:'#1e90ff',alignSelf:'flex-end',margin:'0 0 1rem 1rem',}}>
+    <div className='counter d-flex flex-row'>
+      <div style={{fontSize:"2rem",color:'#1e90ff',alignSelf:'flex-start',margin:'0 0 1rem 1rem',}}>
       {''?!pre:pre}
     </div>
     <div

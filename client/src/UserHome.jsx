@@ -1,21 +1,18 @@
 import TodoList from './TodoList';
 import Navbar from './Navbar';
-import useFetch from './useFetch';
-import ScChartComponent from './BarChart.jsx'
 import Habits from './Habits.jsx';
 import Money from './Money.jsx';
+import MailCard from './Mail'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ChartComponent from "./ExpenditureChart";
-import Counter from './counter';
-import MailCard from './Mail'
 
 import { useParams } from 'react-router-dom';
 import { Link  } from "react-router-dom"
 
 const N=0
 const Home = () => {
-  const {user} = useParams()
+  const {user,theme} = useParams()
+  console.log('theme=',theme)
   const [data,setData] = useState([]) 
 //   const {polls, isPending, error} = useFetch('http://localhost:4000/getpolls')
   
@@ -38,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     if (data) {
-      // console.log("Updated data:", data);
+      console.log("Updated data:", data);
       // console.log("screentime =", data.Todo);
     }
   }, [data]);
@@ -50,18 +47,19 @@ const Home = () => {
   return ( 
     <div className="Home">
     <div>
-    <Navbar userid={user} />
-      <h1>Home Page</h1>
+    <Navbar user={data.name} />
+      
 
       {data?.habits&&(
-        <Habits data={data.habits} name={user}/>
+        <Habits data={data.habits} name={user} theme={theme}/>
       )}
       
-{data?.money&&(<Money data={data.money} name={user}/>)}
+{data?.money&&(<Money data={data.money} name={user} theme={theme}/>)}
       
 
-      <div class='d-flex flex-row justify-content-evenly' style={{margin: "5rem 1rem"}}>
-      <div class='calendar'>
+      <div className='d-flex flex-row flex-md-nowrap flex-wrap justify-content-evenly' style={{margin: "5rem 1rem"}}>
+      <div className='calendar'>
+      <h1 style={{justifySelf:'left'}}>Calendar</h1>
         <iframe
           src="https://calendar.google.com/calendar/embed?src=&ctz=Kolkata/India"
           style={{ border: 0 }}
@@ -69,15 +67,15 @@ const Home = () => {
           height="600"
         />      
       </div>
-      <div class=' todo_notes d-flex flex-row flex-wrap' style={{margin:'0 2rem'}}>
+      <div className=' todo_notes d-flex flex-column flex-wrap justify-content-between' style={{margin:'0 2rem'}}>
       {data?.Todo && (
         <TodoList todos={data.Todo} title="All Todos!"/>
       )}    
 
-<div class='notes align-self-center justify-self-center w-auto'>
+<div className='notes  justify-self-center w-auto'>
   <h3>Notes</h3>
     <p>{data?.Notes &&(
-      <textarea value={data.Notes} style={{ fontSize: '20px', padding: '10px', width: '100%' }} readOnly />
+      <textarea value={data.Notes} style={{ fontSize: '20px', padding: '10px', width: '100%', color:'#000000'}} readOnly />
     )}</p>
   </div></div></div>
   
@@ -89,11 +87,11 @@ const Home = () => {
 
 
  
-{/* <div class='Expenditure Chart'>
+{/* <div className='Expenditure Chart'>
 <ChartComponent name={user} ></ChartComponent>
 </div> 
 
-  <div class='Screentime'>
+  <div className='Screentime'>
   {data?.screentime_min && (
     <Counter n={data.screentime_min} />
   )}  

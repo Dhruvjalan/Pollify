@@ -1,6 +1,6 @@
 import React from "react";
 
-function Stocks({stockData}) {
+function Stocks({stockData,theme}) {
     // const stockData = [
     //     { name: "Apple", price: 150, change: "+2%"},
     //     { name: "Google", price: 2800, change: "-1.5%"},
@@ -22,10 +22,10 @@ function Stocks({stockData}) {
                 <tbody>
                     {stockData.map((stock, index) => (
                         <tr key={index} >
-                            <td style={{borderBottom: '1px solid black', padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>{stock.name}</td>
-                            <td style={{borderBottom: '1px solid black', padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>${stock.price}</td>
-                            <td style={{borderBottom: '1px solid black', padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>{stock.change}</td>
-                            <hr/>
+                            <td style={{borderBottom: `1px solid ${theme==='light'?'black':'white'}`, padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>{stock.name}</td>
+                            <td style={{borderBottom: `1px solid ${theme==='light'?'black':'white'}`, padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>${stock.price}</td>
+                            <td style={{borderBottom: `1px solid ${theme==='light'?'black':'white'}`, padding:'0 0.5rem',color:parseFloat(stock.change.replace('%', ''))>0?'green':'red'}}>{stock.change}</td>
+                            {/* <hr/> */}
                         </tr>
                     ))}
                 </tbody>

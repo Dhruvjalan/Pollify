@@ -22,7 +22,7 @@ const TodoList = ({ todos, title }) => {
   
     axios.delete("http://localhost:4000/deletetodo", {
       data: {
-        name: user,
+        _id: user,
         todoItem: todos[index]
       }
     })
@@ -46,26 +46,32 @@ const TodoList = ({ todos, title }) => {
 
   return (
     <div className='todo-list justify-self-right'>
-    <Link to={`/${user}/create`} style={{background:'#01DFFF',borderRadius:'0.2rem',borderColor:'#000000',borderWidth:'1px',color:'white',textDecoration:'none',margin:'0 0.5rem', padding:'0.2rem 0.5rem' }}>New Todo</Link>      <h2>{title}</h2>
-      {todos.length === 0 ? (
-        <div>No todos</div>
-      ) : (
-        todos.map((todo, index) => (
-          
-          <div class="d-grid" style={{gridTemplateColumns: "0.5fr 2fr 1fr 1fr"}} key={index}>
+    <h1 className="todo-title">{title}</h1>
 
-            <input type='checkbox' name='donetoggle' class='grid-box' style={{transform:'scale(0.5)'}} onChange={()=>toggleRadioButton(index)}/>
-            <h3 style={{justifySelf:'flex-start', textDecoration: struckIndices[index] ? "line-through" : "none"}}>{todo}</h3>
-            <div class='buttons grid-box' style={{display:'flex',flexDirection:'row', justifySelf:'flex-end'}}>
-            <button class='grid-box' onClick={() => HandleDel(index)} style={{background:'#1e90ff',borderRadius:'0.4rem',color:'white', margin:'0 0.5rem',padding:"0 0.2rem",justifySelf:'flex-end'}}>Delete</button>
-            {/* <button onClick={() => HandleEdit(index)}>Edit</button> */}
-            <Link class='grid-box' to={`/${user}/edit/${index}`} style={{background:'#00BFFF',borderRadius:'0.2rem',borderColor:'#000000',borderWidth:'1px',color:'white',textDecoration:'none',margin:'0 0.5rem', padding:'0.2rem 0.5rem',justifySelf:'flex-end' }}>Edit</Link>
-          </div>
-          </div>
+    <Link to={`/${user}/create`} className="new-todo-btn">New Todo</Link>
+
+    {todos.length === 0 ? (
+        <div>No todos</div>
+    ) : (
+        todos.map((todo, index) => (
+            <div className="todo-grid" key={index}>
+                <input
+                    type='checkbox'
+                    name='donetoggle'
+                    className='grid-box checkbox'
+                    onChange={() => toggleRadioButton(index)}
+                />
+                <h3 className={`todo-text ${struckIndices[index] ? "struck" : ""}`}>{todo}</h3>
+                <div className='buttons'>
+                    <button className='todo-btn delete-btn' onClick={()=>HandleDel(index)}>Delete</button>
+                    <Link className='todo-btn edit-btn' to={`/${user}/edit/${index}`} >Edit</Link>
+                </div>
+            </div>
         ))
-      )}
-    </div>
-  );
-};
+    )}
+</div>
+
+    );
+  };
 
 export default TodoList;

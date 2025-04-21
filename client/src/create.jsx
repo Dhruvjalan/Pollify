@@ -30,14 +30,19 @@ const Create_old = () => {
     return ( 
         <div className="Create">
             <Navbar userid={user} />
-            <h2>Create New Poll!</h2>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+
+            <h2 className="text-center mb-4">Create New Poll!</h2>
             
             <form onSubmit={handleSubmit}>
-                <label>Poll Title:</label>
+                <div className="mb-3">
+                <label htmlFor="newtodoTitle" className="form-label">
+                   <strong>Todo Title:</strong> 
+                    </label>
                 <input type='text' required value={title} onChange={(e)=>setTitle(e.target.value)} />
                 
                 <label>Number of Options: </label>
-                <input type='text' required value={count} onChange={(e)=>setCount( parseInt(e.target.value) ? e.target.value : 0)} />
+                <input className="form-control rounded-0" type='text' required value={count} onChange={(e)=>setCount( parseInt(e.target.value) ? e.target.value : 0)} />
 
                 {Array.from({ length: count }, (_, i) => (
                     <div key={i}>
@@ -56,7 +61,9 @@ const Create_old = () => {
 
                 {!isPending && <button>Post Poll</button>}
                 {isPending && <button disabled>Posting Poll</button>}
+                </div>
             </form>
+            </div>
         </div>
     );
 }

@@ -9,7 +9,7 @@ import { Link  } from "react-router-dom"
 
 const Search = () => {
   const {user} = useParams()
-  const [mode,setMode] = useState(null)
+  const [theme,setMode] = useState(null)
   const [searchdata,setSearchData] = useState('')
   const [polls,setPolls] = useState({}) 
   const [text,setText] = useState('You Have 0 Matches') 
@@ -25,7 +25,7 @@ const Search = () => {
       .catch(error => {
         console.error("Error fetching polls:", error);
       });
-  }, [searchdata,mode]); // Empty dependency array to run once on mount
+  }, [searchdata,theme]); // Empty dependency array to run once on mount
 
 
   const getMode = (e)=>{
@@ -37,25 +37,25 @@ const Search = () => {
     var temp_polls=[]
 
     
-    if(mode==='Poll-Id'){
+    if(theme==='Poll-Id'){
       polls.forEach(exactpoll=>{
         if(exactpoll._id==searchdata.replace(/\s+/g, '')){
         temp_polls.push(exactpoll)
       }
       })
-    }else if(mode==='MyPolls'){
+    }else if(theme==='MyPolls'){
       polls.forEach(element => {
         if(element.author==user){
           temp_polls.push(element)
         }
       });
-    }else if(mode==='Title'){
+    }else if(theme==='Title'){
       polls.forEach(element => {
         if(element.title.includes(searchdata)){
           temp_polls.push(element)
         }
       });
-    }else if(mode=='all'){
+    }else if(theme=='all'){
       window.location.reload(true)
     }
 
@@ -79,14 +79,14 @@ const Search = () => {
 
     <form onSubmit={handleSubmit}> 
                 
-                <select name="mode" onChange={getMode}>
+                <select name="theme" onChange={getMode}>
                 <option value="all">All</option>
                 <option value="MyPolls">My Polls</option>
                 <option value="Poll-Id">By Poll id</option>
                 <option value="Title">By Title</option>
                 </select>
-                {mode && mode!='MyPolls'&& mode!='all'&& <label>Enter {mode}</label>}
-{                mode && mode!='MyPolls'&& mode!='all'&& <input type='text' value={searchdata} onChange={e=>{
+                {theme && theme!='MyPolls'&& theme!='all'&& <label>Enter {theme}</label>}
+{                theme && theme!='MyPolls'&& theme!='all'&& <input type='text' value={searchdata} onChange={e=>{
                     setSearchData(e.target.value)
                     
                     }}/>

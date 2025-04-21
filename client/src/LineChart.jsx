@@ -1,79 +1,78 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale,LineElement, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement } from "chart.js";
-import axios from "axios";
+import { ThemeContext } from "./ThemeContext";
 
+const LineChart = ({ linedata, title }) => {
+  const { theme } = useContext(ThemeContext);
+  const [colors, setColors] = useState({
+    borderColor: "#000000",
+    gridColor: "black",
+    textColor: "black",
+  });
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement);
+  useEffect(() => {
+    const styles = getComputedStyle(document.body);
+    setColors({
+      borderColor: styles.getPropertyValue("--text-color").trim(),
+      gridColor: styles.getPropertyValue("--nav-border").trim(),
+      textColor: styles.getPropertyValue("--text-color").trim(),
+    });
+  }, [theme]);
 
-const LineChart = ({linedata}) => {
-    // const [data, setData] = useState({
-    //     labels: [],
-    //     datasets: [{
-    //         label: 'Dataset 1',
-    //         data: [],
-    //         borderColor: ['rgba(66, 3, 22, 0.2)'],
-    //         borderWidth: 1,
-    //     }]
-    // });
-    const height = 400;
-    const width = 400;
+  const data = {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [
+      {
+        label: title,
+        data: linedata,
+        backgroundColor: "rgba(30, 144, 255, 0.2)",
+        borderColor: theme=='dark'?'#aee7ff':'#0b1e3d',
+        pointBorderColor: "aqua",
+        tension: 0.3,
+      },
+    ],
+  };
 
-    // useEffect(() => {
-    //     axios.post("http://localhost:4000/getuserdata", { name })
-    //         .then(result => {
-    //             const userData = result.data;
-    //             const i = 1;
-    //             const height = userData.height || 400;
-    //             const width = userData.width || 400;
-    //             if (userData && userData.Expenditure) {
-    //                 const newLabels = userData.Expenditure.map(element => element.title);
-    //                 const newValues = userData.Expenditure.map(element => element.Spent);
-    //                 setData({
-    //                     labels: newLabels,
-    //                     datasets: [{
-    //                         ...data.datasets[0],
-    //                         data: newValues,
-    //                         backgroundColor: ['rgb(241, 53, 109)','rgb(248, 94, 140)','rgb(239, 128, 161)'],
-    //                     }],
-                        
-    //                 });
-    //             }
-    //         })
-    //         .catch(err => console.log("Axios error:", err));
-    // }, []); // Only depend on `id`
+  const options = {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        bodyColor: theme=='dark'?'#aee7ff':'#0b1e3d',
+        titleColor: theme=='dark'?'#aee7ff':'#0b1e3d',
+      },
+      legend: {
+        display: false,
+        color: theme=='dark'?'#aee7ff':'#0b1e3d'
+      },
+      title: { display: true, text: title,color:theme=='dark'?'#aee7ff':'#0b1e3d' }
 
-    const data = {
-        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-        datasets: [{
-            labels: 'Sales of the Week',
-            data:linedata,
-            backgroundColor: 'aqua',
-            borderColor: 'black',
-            pointBorderColor: 'aqua'
-        }]
-    }
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {display:false},
-            title: { display: true, text: 'Expenditure' }
-        },
-        scales:{
-            y:{
-                min:Math.min(...linedata)*0.8,
-                max:Math.max(...linedata)*1.2
-            },
-        }
-        // maintainAspectRatio : false,
-    };
+    },
+    scales: {
+      y: {
+        min: Math.min(...linedata) * 0.8,
+        max: Math.max(...linedata) * 1.2,
+        ticks: { color: theme=='dark'?'#aee7ff':'#0b1e3d' },
+        grid: { color: theme=='dark'?'#aee7ff':'#0b1e3d' },
+      },
+      x: {
+        ticks: { color: theme=='dark'?'#aee7ff':'#0b1e3d' },
+        grid: { color: theme=='dark'?'#aee7ff':'#0b1e3d' },
+      },
+    },
+  };
 
-    return (
-        <div style={{ width: '50%', margin: '0 auto' }}>
-            <Line data={data} options={options} />
-        </div>
-    );
+  return (
+    <div
+      style={{
+        width: "50%",
+        margin: "0 auto",
+        padding: "1rem",
+        borderRadius: "10px",
+      }}
+    >
+      <Line data={data} options={options} />
+    </div>
+  );
 };
 
 export default LineChart;

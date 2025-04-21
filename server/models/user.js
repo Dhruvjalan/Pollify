@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   Location: locationSchema,
   Notes: String,
   screentime_min: String,
-  Todo: [String]
+  Todo:{ type: [String],default:['dowork']}
 });
 
 UserModel = mongoose.model('User', userSchema);

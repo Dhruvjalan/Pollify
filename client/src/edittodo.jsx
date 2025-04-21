@@ -32,22 +32,49 @@ const Edit = () => {
             {console.log('axios error:',err)})
 
         navigate(`/${user}/home`)
-
+        navigate(0)
       };
 
-    return ( 
-        <div className="Create">
-            <Navbar userid={user} />
-            <h2>Edit Todo!</h2>
-            
-            <form onSubmit={HandleEdit}>
-                <label>New Todo Title:</label>
-                <input type='text' required value={title} onChange={(e)=>setTitle(e.target.value)} />
-                
-                {!isPending && <button>Edit Todo</button>}
-                {isPending && <button disabled>Editting Todo</button>}
-            </form>
+      return (
+        <div>
+        <Navbar userid={user} />
+
+        <div className="d-flex justify-content-center align-items-center vh-100">
+
+            <div className="bg-white p-4 rounded w-25">
+    
+                <h2 className="text-center mb-4" style={{color: 'black'}}>Edit Todo!</h2>
+    
+                <form onSubmit={HandleEdit}>
+                    <div className="mb-3">
+                        <label htmlFor="todoTitle" className="form-label">
+                            <strong><h5 style={{color: 'black'}}>New Todo Title:</h5></strong>
+                        </label>
+                        <input
+                            id="todoTitle"
+                            type="text"
+                            required
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="form-control rounded-0"
+                        />
+                    </div>
+    
+                    {!isPending && (
+                        <button type="submit" className="btn btn-primary w-100 rounded-0">
+                            Edit Todo
+                        </button>
+                    )}
+                    {isPending && (
+                        <button disabled className="btn btn-secondary w-100 rounded-0">
+                            Editing Todo...
+                        </button>
+                    )}
+                </form>
+            </div>
+        </div>
         </div>
     );
+    
 }
 export default Edit;

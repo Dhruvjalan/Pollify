@@ -1,13 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import {ThemeContext} from "./ThemeContext"
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale,LineElement, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement } from "chart.js";
+import { Chart as ChartJS, CategoryScale,LineElement, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, Filler } from "chart.js";
 import axios from "axios";
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement);
 
-const BarChart = ({bardata}) => {
+const BarChart = ({bardata,title}) => {
     // const [data, setData] = useState({
     //     labels: [],
     //     datasets: [{
@@ -17,9 +18,14 @@ const BarChart = ({bardata}) => {
     //         borderWidth: 1,
     //     }]
     // });
+    const {theme} = useContext(ThemeContext)
+    const [colors,setColors]=useState({
+        borderColor: 'black',
+        gridColor: 'black',
+        textColor:'black'
+    })
     const height = 400;
     const width = 400;
-
     // useEffect(() => {
     //     axios.post("http://localhost:4000/getuserdata", { name })
     //         .then(result => {
@@ -44,26 +50,50 @@ const BarChart = ({bardata}) => {
     //         .catch(err => console.log("Axios error:", err));
     // }, []); // Only depend on `id`
 
+    useEffect(()=>{
+        const styles = getComputedStyle(document.body);
+        setColors({
+            borderColor: styles.getPropertyValue("--text-color").trim(),
+            gridColor: styles.getPropertyValue("--nav-border").trim(),
+            textColor: styles.getPropertyValue("--text-color").trim(),
+            blackwhite: styles.getPropertyValue("--black-white").trim(),
+        });
+        // console.log("colors on l61",colors, 'theme=',theme)
+    },[theme])
+
     const data = {
         labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
         datasets: [{
-            labels: 'Sales of the Week',
+            labels: title,
             data:bardata,
             backgroundColor: 'aqua',
-            borderColor: 'black',
+            borderColor: colors.textColor,
             pointBorderColor: 'aqua'
         }]
     }
+    // console.log("colors on l74",colors, "theme=",theme)
     const options = {
         responsive: true,
         plugins: {
-            legend: {display:false},
-            title: { display: true, text: 'Expenditure' }
+            legend: {display:false,color:theme=='dark'?'#aee7ff':'#0b1e3d'},
+            title: { display: true, text: title,color:theme=='dark'?'#aee7ff':'#0b1e3d' }
         },
         scales:{
             y:{
                 min:Math.min(...bardata)*0.8,
-                max:Math.min(...bardata)*1.2
+                max:Math.min(...bardata)*1.2,
+                grid:{
+                    color:theme=='dark'?'#aee7ff':'#0b1e3d',
+                },
+                ticks:{color:theme=='dark'?'#aee7ff':'#0b1e3d'},
+            },
+            x:{
+                ticks:{
+                    color: theme=='dark'?'#aee7ff':'#0b1e3d',
+                },
+                grid:{
+                    color: theme=='dark'?'#aee7ff':'#0b1e3d',
+                },
             },
         }
         // maintainAspectRatio : false,
