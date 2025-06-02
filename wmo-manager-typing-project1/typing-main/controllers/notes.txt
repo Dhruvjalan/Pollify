@@ -1,3 +1,0 @@
-Todo: 
-Figure Out moving text and real time correction
-FrontEnd
